@@ -9,13 +9,9 @@ export default function HtmlBody({ children }: { children: ReactNode }) {
   const theme = createTheme(base);
 
   useEffect(() => {
-    theme.mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    //theme.mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    theme.mode = 'dark';
   }, []);
 
-  return (
-    <PrismaneProvider theme={theme}>
-      <MyHeader />
-      {children}
-    </PrismaneProvider>
-  );
+  return <PrismaneProvider theme={theme}>{children}</PrismaneProvider>;
 }

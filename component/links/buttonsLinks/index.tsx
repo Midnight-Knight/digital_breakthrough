@@ -8,13 +8,10 @@ type Props = {
 
 export default function ButtonsLinks({ primary, text, link }: Props) {
   return (
-    <Button size={'md'} variant={primary ? 'primary' : 'tertiary'}>
-      <Link
-        cl={!primary ? () => ['primary', 300] : (theme) => (theme.mode === 'dark' ? ['base', 100] : ['base', 900])}
-        href={link}
-        underline="none">
+    <Link href={link} underline="none">
+      <Button w={'100%'} size={'md'} variant={primary ? 'primary' : 'tertiary'}>
         {text}
-      </Link>
-    </Button>
+      </Button>
+    </Link>
   );
 }
