@@ -20,7 +20,7 @@ export default function MyHeader() {
       bdbc={(theme) => ['base', 500]}>
       <Flex justify={'between'} align={'center'} w={'100%'}>
         <Flex justify={'center'} align={'center'} gap={10}>
-          <Text cl={(theme) => ['primary', 700]} fs={'2xl'} fw={'bold'}>
+          <Text cl={(theme) => ['primary', 400]} fs={'2xl'} fw={'bold'}>
             RealityFirst
           </Text>
         </Flex>
