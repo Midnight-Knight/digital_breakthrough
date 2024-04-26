@@ -3,7 +3,7 @@ import { Button, Card, Center, Flex, Form, Hide, Link, Main, NumberField, Progre
 import MyAside from '@/component/myAside';
 import Typewriter from 'typewriter-effect';
 import { notFound, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 export default function Chat() {
   const searchParams = useSearchParams();
