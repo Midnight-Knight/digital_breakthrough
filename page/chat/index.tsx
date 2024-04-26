@@ -22,7 +22,7 @@ export default function Chat() {
       body: new URLSearchParams({
         v: '5.131',
         token: token,
-        access_token: access_token,
+        access_token: AT,
         uuid: uuid,
       }),
     });
