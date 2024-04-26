@@ -1,5 +1,5 @@
 import Analytics from '../../page/analytics';
 
-export default function AdminPage() {
+export default function AnalyticsPage() {
   return <Analytics />;
 }

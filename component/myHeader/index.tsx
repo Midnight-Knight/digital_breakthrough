@@ -27,7 +27,7 @@ export default function MyHeader() {
         <Flex justify={'center'} align={'center'} gap={10}>
           <ButtonsLinks primary={pathname === '/'} text={'Главная'} link={'/'} />
           <ButtonsLinks primary={pathname === '/chat'} text={'Чат-бот'} link={'/chat'} />
-          <ButtonsLinks primary={pathname === '/admin'} text={'Анализатор'} link={'/admin'} />
+          <ButtonsLinks primary={pathname === '/analytics'} text={'Анализатор'} link={'/analytics'} />
         </Flex>
       </Flex>
     </Header>

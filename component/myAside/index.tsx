@@ -19,7 +19,8 @@ export default function MyAside({ children }: Props) {
       <Flex direction="column" w={'100%'} gap={10}>
         <ButtonsLinks primary={pathname === '/'} text={'Главная'} link={'/'} />
         <ButtonsLinks primary={pathname.includes('/authorization')} text={'Чат-бот'} link={'/authorization'} />
-        <ButtonsLinks primary={pathname === '/admin'} text={'Анализатор'} link={'/admin'} />
+        <ButtonsLinks primary={pathname === '/analytics'} text={'Анализатор'} link={'/analytics'} />
+        <ButtonsLinks primary={pathname === '/admin'} text={'Админ панель'} link={'/admin'} />
       </Flex>
       <Flex direction="column" w={'100%'} gap={10}>
         {children}

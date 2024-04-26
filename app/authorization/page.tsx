@@ -1,7 +1,5 @@
-'use client';
-import { useRouter } from 'next/navigation';
+import Authorization from '@/page/authorization';
 
 export default function AuthorizationPage() {
-  const router = useRouter();
-  return router.push('/authorization/chat');
+  return <Authorization />;
 }

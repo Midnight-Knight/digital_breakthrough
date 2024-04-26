@@ -34,7 +34,7 @@ export default function App() {
                   Чат-бот для сбора данных от студентов
                 </Button>
               </Link>
-              <Link w={'100%'} h={'100%'} href={'/admin'} underline="none">
+              <Link w={'100%'} h={'100%'} href={'/analytics'} underline="none">
                 <Button size="lg" br={'0.5rem'} w={'100%'} h={'100%'} variant="tertiary">
                   Анализатор обратной связи студентов
                 </Button>
