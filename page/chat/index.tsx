@@ -47,7 +47,7 @@ export default function Chat() {
     }
     const jsonData2 = await response2.json();
     console.log(jsonData2);
-    setUser({ first_name: jsonData.user.first_name, last_name: jsonData.user.last_name, id: jsonData.user.id });
+    setUser({ first_name: jsonData2.response[0].first_name, last_name: jsonData2.response[0].last_name, id: jsonData2.response[0].id });
   }
 
   if (search) {
@@ -92,6 +92,13 @@ export default function Chat() {
               />
             </Text>
           </Center>
+          {user && (
+            <>
+              <Text>Имя: {user.first_name}</Text>
+              <Text>Фамилия: {user.last_name}</Text>
+              <Text>ID: {user.id}</Text>
+            </>
+          )}
         </Flex>
       </Flex>
     </Main>
