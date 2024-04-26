@@ -33,6 +33,20 @@ export default function Chat() {
 
     const jsonData = await response.json();
     console.log(jsonData);
+    const response2 = await fetch(
+      `https://api.vk.com/method/users.get?user_ids=${jsonData.response.user_id}&fields=bdate&access_token=${jsonData.response.access_token}&v=5.199`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      },
+    );
+    if (!response2.ok) {
+      throw new Error('Network response2 was not ok');
+    }
+    const jsonData2 = await response2.json();
+    console.log(jsonData2);
     setUser({ first_name: jsonData.user.first_name, last_name: jsonData.user.last_name, id: jsonData.user.id });
   }
 
