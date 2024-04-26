@@ -17,7 +17,7 @@ export default function Authorization() {
       state: 'dj29fnsadjsd82...',
     });
     setfloatingOneTap(new VKID.FloatingOneTap());
-    setContainer(document.getElementById('VkIdSdkOneTap'));
+    setContainer(document.getElementById('VkIdSdkFloatingOneTap'));
   }, []);
 
   useEffect(() => {
