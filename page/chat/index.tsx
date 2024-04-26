@@ -15,7 +15,6 @@ export default function Chat() {
     const response = await fetch('https://api.vk.com/method/auth.exchangeSilentAuthToken', {
       method: 'POST',
       headers: {
-        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: new URLSearchParams({
@@ -37,7 +36,6 @@ export default function Chat() {
       {
         method: 'POST',
         headers: {
-          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/x-www-form-urlencoded',
         },
       },
