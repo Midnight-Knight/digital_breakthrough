@@ -7,7 +7,7 @@ import { appVk } from '@/consts/vk';
 import { useEffect, useState } from 'react';
 
 export default function Authorization() {
-  const [floatingOneTap, setfloatingOneTap] = useState<VKID.FloatingOneTap | null>(null);
+  const [oneTap, setOneTap] = useState<VKID.OneTap | null>(null);
   const [container, setContainer] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -16,13 +16,13 @@ export default function Authorization() {
       redirectUrl: 'https://digital-breakthrough.vercel.app/authorization/chat',
       state: 'dj29fnsadjsd82...',
     });
-    setfloatingOneTap(new VKID.FloatingOneTap());
-    setContainer(document.getElementById('VkIdSdkFloatingOneTap'));
+    setOneTap(new VKID.OneTap());
+    setContainer(document.getElementById('VkIdSdkOneTap'));
   }, []);
 
   useEffect(() => {
-    if (container && floatingOneTap) {
-      floatingOneTap.render({ appName: 'digital-breakthrough', scheme: VKID.Scheme.LIGHT, lang: VKID.Languages.RUS });
+    if (container && oneTap) {
+      oneTap.render({ container: container, scheme: VKID.Scheme.LIGHT, lang: VKID.Languages.RUS });
     }
   }, [container]);
 
@@ -47,7 +47,7 @@ export default function Authorization() {
             </Text>
           </Center>
           <Flex w={'100%'} justify={'center'} align={'center'} h={'35%'}>
-            <div id="VkIdSdkFloatingOneTap"></div>
+            <div id="VkIdSdkOneTap"></div>
           </Flex>
         </Flex>
       </Flex>
