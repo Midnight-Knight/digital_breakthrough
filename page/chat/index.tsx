@@ -11,17 +11,18 @@ export default function Chat() {
   const [user, setUser] = useState<{ first_name: string; last_name: string; id: number } | null>(null);
   const search = searchParams.get('payload');
 
-  async function Curl(token: string, access_token: string, uuid: string) {
-    const response = await fetch('https://api.vk.com/method/auth.exchangeSilentAuthToken', {
+  async function Curl(token: string, id: string, uuid: string) {
+    const response = await fetch('https://api.vk.com/method/auth.getProfileInfoBySilentToken', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: new URLSearchParams({
-        v: '5.131',
-        token: token,
+      body: JSON.stringify({
+        v: '5.108',
+        token: [token],
         access_token: AT,
-        uuid: uuid,
+        uuid: [uuid],
+        event: [''],
       }),
     });
 
