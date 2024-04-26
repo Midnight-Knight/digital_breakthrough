@@ -12,7 +12,7 @@ export default function Chat() {
   const search = searchParams.get('payload');
 
   async function Curl(token: string, access_token: string, uuid: string) {
-    const response = await fetch('https://api.vk.com/method/auth.getProfileInfoBySilentToken()', {
+    const response = await fetch('https://api.vk.com/method/auth.exchangeSilentAuthToken', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
