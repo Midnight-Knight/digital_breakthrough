@@ -1,3 +1,4 @@
+'use client';
 import Chat from '@/page/chat';
 import { Suspense } from 'react';
 
