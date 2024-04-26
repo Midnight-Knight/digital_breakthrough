@@ -2,8 +2,13 @@
 import { Button, Card, Center, Flex, Form, Hide, Link, Main, NumberField, Progress, Text, TextareaField, TextField } from '@prismane/core';
 import MyAside from '@/component/myAside';
 import Typewriter from 'typewriter-effect';
+import { useSearchParams } from 'next/navigation';
 
 export default function Chat() {
+  const searchParams = useSearchParams();
+  const search = searchParams.toString();
+  console.log(search);
+
   return (
     <Main p={0} py={0} px={0} w={'100vw'} h={'100vh'} bg={(theme) => (theme.mode === 'dark' ? ['base', 900] : ['base', 100])}>
       <Flex w={'100%'}>
