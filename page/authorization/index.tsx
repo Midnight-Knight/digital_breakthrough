@@ -5,13 +5,13 @@ import Typewriter from 'typewriter-effect';
 import * as VKID from '@vkid/sdk';
 import { appVk } from '@/consts/vk';
 import { useEffect, useState } from 'react';
-import { on } from 'next/dist/client/components/react-dev-overlay/pages/bus';
 
 export default function Authorization() {
   const [oneTap, setOneTap] = useState<VKID.OneTap | null>(null);
   const [container, setContainer] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
+    console.log(appVk);
     VKID.Config.set({
       app: appVk,
       redirectUrl: 'https://digital-breakthrough.vercel.app/authorization/chat',
