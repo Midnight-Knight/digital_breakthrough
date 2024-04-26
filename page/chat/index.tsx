@@ -31,6 +31,7 @@ export default function Chat() {
     }
 
     const jsonData = await response.json();
+    console.log(jsonData);
     setUser({ first_name: jsonData.user.first_name, last_name: jsonData.user.last_name, id: jsonData.user.id });
   }
 
