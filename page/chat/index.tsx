@@ -5,15 +5,41 @@ import Typewriter from 'typewriter-effect';
 import { notFound, useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 
+// curl "https://api.vk.com/method/auth.exchangeSilentAuthToken" -d "v=5.131&token=silent_token&access_token=service_token&uuid=uuid"
+
 export default function Chat() {
   const searchParams = useSearchParams();
   const [user, setUser] = useState<{ first_name: string; last_name: string; id: number } | null>(null);
   const search = searchParams.get('payload');
+
+  async function Curl(token: string, access_token: string, uuid: string) {
+    const response = await fetch('https://api.vk.com/method/auth.exchangeSilentAuthToken', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        v: '5.131',
+        token: token,
+        access_token: access_token,
+        uuid: uuid,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const jsonData = await response.json();
+    setUser({ first_name: jsonData.user.first_name, last_name: jsonData.user.last_name, id: jsonData.user.id });
+  }
+
   if (search) {
     const json = JSON.parse(search);
     if (json.user.first_name && json.user.last_name && json.user.id) {
       setUser({ first_name: json.user.first_name, last_name: json.user.last_name, id: json.user.id });
     } else {
+      Curl(json.token, json.type, json.uuid);
     }
   } else {
     notFound();
