@@ -11,7 +11,7 @@ export default function Chat() {
   const search = searchParams.get('payload');
   if (search) {
     const json = JSON.parse(search);
-    setUser({ first_name: json.user.first_name, last_name: json.user.last_name, id: json.user.id });
+    console.log(json);
   } else {
     notFound();
   }
