@@ -5,7 +5,7 @@ import Typewriter from 'typewriter-effect';
 
 export default function App() {
   return (
-    <Main p={0} py={0} px={0} w={'100vw'} h={'100vh'} bg={(theme) => (theme.mode === 'dark' ? ['base', 900] : ['base', 100])}>
+    <Main p={0} py={0} px={0} w={'100vw'} mih={'100vh'} pl={260} bg={(theme) => (theme.mode === 'dark' ? ['base', 900] : ['base', 100])}>
       <Flex w={'100%'}>
         <MyAside>
           <></>
@@ -29,7 +29,7 @@ export default function App() {
               Страницы
             </Text>
             <Flex w={'100%'} direction={'row'} gap={'5rem'} h={'100%'}>
-              <Link w={'100%'} h={'100%'} href={'/authorization'} underline="none">
+              <Link w={'100%'} h={'100%'} href={'/authorizationBlock'} underline="none">
                 <Button size="lg" br={'0.5rem'} w={'100%'} h={'100%'} variant="tertiary">
                   Чат-бот для сбора данных от студентов
                 </Button>

@@ -12,7 +12,18 @@ type Props = {
 export default function MyAside({ children }: Props) {
   const pathname = usePathname();
   return (
-    <Flex w={260} p={'1rem'} pt={'1.5rem'} bg={() => ['primary', 900]} direction={'column'} justify={'start'} gap={'1.5rem'}>
+    <Flex
+      w={260}
+      h={'100vh'}
+      pos={'fixed'}
+      t={0}
+      l={0}
+      p={'1rem'}
+      pt={'1.5rem'}
+      bg={() => ['primary', 900]}
+      direction={'column'}
+      justify={'start'}
+      gap={'1.5rem'}>
       <Text cl={(theme) => ['base', theme.mode === 'dark' ? 100 : 900]} fs={'2xl'} fw={'bold'}>
         RealityFirst
       </Text>
@@ -20,11 +31,8 @@ export default function MyAside({ children }: Props) {
         <ButtonsLinks primary={pathname === '/'} text={'Главная'} link={'/'} />
         <ButtonsLinks primary={pathname.includes('/authorization')} text={'Чат-бот'} link={'/authorization'} />
         <ButtonsLinks primary={pathname === '/analytics'} text={'Анализатор'} link={'/analytics'} />
-        <ButtonsLinks primary={pathname === '/admin'} text={'Админ панель'} link={'/admin'} />
       </Flex>
-      <Flex direction="column" w={'100%'} gap={10}>
-        {children}
-      </Flex>
+      {children}
     </Flex>
   );
 }
