@@ -36,6 +36,7 @@ export default function Chat() {
 
   if (search) {
     const json = JSON.parse(search);
+    console.log(json);
     if (json.user.first_name && json.user.last_name && json.user.id) {
       setUser({ first_name: json.user.first_name, last_name: json.user.last_name, id: json.user.id });
     } else {
