@@ -29,7 +29,7 @@ export default function App() {
               Страницы
             </Text>
             <Flex w={'100%'} direction={'row'} gap={'5rem'} h={'100%'}>
-              <Link w={'100%'} h={'100%'} href={'/authorizationBlock'} underline="none">
+              <Link w={'100%'} h={'100%'} href={'/authorization'} underline="none">
                 <Button size="lg" br={'0.5rem'} w={'100%'} h={'100%'} variant="tertiary">
                   Чат-бот для сбора данных от студентов
                 </Button>
