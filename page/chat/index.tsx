@@ -8,16 +8,13 @@ import { Suspense, useEffect, useState } from 'react';
 export default function Chat() {
   const searchParams = useSearchParams();
   const [user, setUser] = useState<{ first_name: string; last_name: string; id: number } | null>(null);
-
-  useEffect(() => {
-    const search = searchParams.get('payload');
-    if (search) {
-      const json = JSON.parse(search);
-      setUser({ first_name: json.user.first_name, last_name: json.user.last_name, id: json.user.id });
-    } else {
-      notFound();
-    }
-  }, []);
+  const search = searchParams.get('payload');
+  if (search) {
+    const json = JSON.parse(search);
+    setUser({ first_name: json.user.first_name, last_name: json.user.last_name, id: json.user.id });
+  } else {
+    notFound();
+  }
 
   useEffect(() => {
     console.log(user);
