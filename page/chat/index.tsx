@@ -2,12 +2,26 @@
 import { Button, Card, Center, Flex, Form, Hide, Link, Main, NumberField, Progress, Text, TextareaField, TextField } from '@prismane/core';
 import MyAside from '@/component/myAside';
 import Typewriter from 'typewriter-effect';
-import { useSearchParams } from 'next/navigation';
+import { notFound, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function Chat() {
   const searchParams = useSearchParams();
-  const search = searchParams.toString();
-  console.log(search);
+  const search = searchParams.get('payload');
+  const [user, setUser] = useState<{ first_name: string; last_name: string; id: number } | null>(null);
+
+  useEffect(() => {
+    if (search) {
+      const json = JSON.parse(search);
+      setUser({ first_name: json.user.first_name, last_name: json.user.last_name, id: json.user.id });
+    } else {
+      notFound();
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   return (
     <Main p={0} py={0} px={0} w={'100vw'} h={'100vh'} bg={(theme) => (theme.mode === 'dark' ? ['base', 900] : ['base', 100])}>

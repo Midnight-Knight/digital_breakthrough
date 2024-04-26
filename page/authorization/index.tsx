@@ -11,7 +11,6 @@ export default function Authorization() {
   const [container, setContainer] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
-    console.log(appVk);
     VKID.Config.set({
       app: appVk,
       redirectUrl: 'https://digital-breakthrough.vercel.app/authorization/chat',
