@@ -22,7 +22,7 @@ export default function Chat() {
       body: new URLSearchParams({
         v: '5.131',
         token: token,
-        access_token: AT,
+        access_token: access_token,
         uuid: uuid,
       }),
     });
@@ -42,7 +42,6 @@ export default function Chat() {
     if (json.user) {
       setUser({ first_name: json.user.first_name, last_name: json.user.last_name, id: json.user.id });
     } else {
-      console.log('curl');
       Curl(json.token, json.type, json.uuid);
     }
   } else {
