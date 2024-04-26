@@ -4,6 +4,7 @@ import MyAside from '@/component/myAside';
 import Typewriter from 'typewriter-effect';
 import { notFound, useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
+import { AT } from '@/consts/token';
 
 // curl "https://api.vk.com/method/auth.exchangeSilentAuthToken" -d "v=5.131&token=silent_token&access_token=service_token&uuid=uuid"
 
@@ -21,7 +22,7 @@ export default function Chat() {
       body: new URLSearchParams({
         v: '5.131',
         token: token,
-        access_token: access_token,
+        access_token: AT,
         uuid: uuid,
       }),
     });
@@ -41,6 +42,7 @@ export default function Chat() {
     if (json.user.first_name && json.user.last_name && json.user.id) {
       setUser({ first_name: json.user.first_name, last_name: json.user.last_name, id: json.user.id });
     } else {
+      console.log('curl');
       Curl(json.token, json.type, json.uuid);
     }
   } else {
