@@ -6,6 +6,7 @@ import MyAside from '@/component/myAside';
 import Typewriter from 'typewriter-effect';
 import AnalyticsPage from '@/app/analytics/page';
 import ChoiseWebinar from '@/component/card/choiseWebinar';
+import FormCategory from '@/component/analytics/formCategory';
 
 export default function Analytics() {
   const [data, setData] = useState<
@@ -17,7 +18,7 @@ export default function Analytics() {
   >([]);
 
   return (
-    <Main p={0} py={0} px={0} w={'100vw'} mih={'100vh'} pl={260} bg={(theme) => (theme.mode === 'dark' ? ['base', 900] : ['base', 100])}>
+    <Main p={0} py={0} px={0} w={'100vw'} mih={'100vh'} pl={260} bg={theme => (theme.mode === 'dark' ? ['base', 900] : ['base', 100])}>
       <Flex w={'100%'}>
         <MyAside>
           <></>
@@ -29,13 +30,13 @@ export default function Analytics() {
                 options={{
                   delay: 75,
                 }}
-                onInit={(typewriter) => {
+                onInit={typewriter => {
                   typewriter.typeString('Анализатор обратной связи студентов').start();
                 }}
               />
             </Text>
           </Center>
-          <ChoiseWebinar />
+          <FormCategory />
         </Flex>
       </Flex>
     </Main>
