@@ -2,16 +2,21 @@
 import { Button, Card, Flex, Form, Progress, Text, TextField } from '@prismane/core';
 import { useForm } from '@prismane/core/hooks';
 import { useRouter } from 'next/navigation';
-import { useCallback } from 'react';
 
 export default function AuthorizationBlock() {
   const router = useRouter();
   const { handleSubmit, handleReset, register, getValue } = useForm({
     fields: {
-      last_name: {
+      name: {
         value: '',
       },
-      first_name: {
+      teacher: {
+        value: '',
+      },
+      webinar: {
+        value: '',
+      },
+      course: {
         value: '',
       },
     },
@@ -27,28 +32,52 @@ export default function AuthorizationBlock() {
         <Form
           w={'100%'}
           onSubmit={(e: any) => {
-            handleSubmit(e, (v: any) => router.push(`/authorization/chat?first_name=${v.first_name}&last_name=${v.last_name}`));
+            handleSubmit(e, (v: any) => {
+              if (v.name !== '' && v.teacher !== '' && v.webinar !== '' && v.course !== '') {
+                router.push(`/authorization/chat?name=${v.name}&teacher=${v.teacher}&webinar=${v.webinar}&course=${v.course}`);
+              }
+            });
           }}
           onReset={() => handleReset()}>
           <Flex w={'100%'} direction={'row'} gap={24}>
             <Flex direction={'column'} gap={24}>
               <Flex h={40} direction={'column'} justify={'center'}>
                 <Text cl={() => ['base', 200]} fs={'base'} ta={'left'} fw={'normal'} w={'100%'}>
-                  Фамилия
+                  ФИО Студента
                 </Text>
               </Flex>
               <Flex h={40} direction={'column'} justify={'center'}>
                 <Text cl={() => ['base', 200]} fs={'base'} ta={'left'} fw={'normal'} w={'100%'}>
-                  Имя
+                  ФИО Преподавателя
+                </Text>
+              </Flex>
+              <Flex h={40} direction={'column'} justify={'center'}>
+                <Text cl={() => ['base', 200]} fs={'base'} ta={'left'} fw={'normal'} w={'100%'}>
+                  Вебинар курса
+                </Text>
+              </Flex>
+              <Flex h={40} direction={'column'} justify={'center'}>
+                <Text cl={() => ['base', 200]} fs={'base'} ta={'left'} fw={'normal'} w={'100%'}>
+                  Курс/Программа обучения
                 </Text>
               </Flex>
             </Flex>
             <Flex w={'100%'} direction={'column'} gap={24}>
-              <TextField placeholder="Введите фамилию" {...register('last_name')} />
-              <TextField placeholder="Введите имя" {...register('first_name')} />
+              <TextField placeholder="Введите фио студента" {...register('name')} />
+              <TextField placeholder="Введите фио преподователя" {...register('teacher')} />
+              <TextField placeholder="Введите название вебинара" {...register('webinar')} />
+              <TextField placeholder="Введите название курса" {...register('course')} />
             </Flex>
           </Flex>
-          <Progress w={'100%'} value={(getValue('last_name') !== '' ? 50 : 0) + (getValue('first_name') !== '' ? 50 : 0)} />
+          <Progress
+            w={'100%'}
+            value={
+              (getValue('name') !== '' ? 25 : 0) +
+              (getValue('teacher') !== '' ? 25 : 0) +
+              (getValue('webinar') !== '' ? 25 : 0) +
+              (getValue('course') !== '' ? 25 : 0)
+            }
+          />
           <Button size="md" w={'100%'} type="submit">
             Авторизоваться/Зарегистрироваться
           </Button>

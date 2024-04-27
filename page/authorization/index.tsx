@@ -6,7 +6,7 @@ import AuthorizationBlock from '@/component/card/authorizationBlock';
 
 export default function Authorization() {
   return (
-    <Main p={0} py={0} px={0} w={'100vw'} mih={'100vh'} pl={260} bg={(theme) => (theme.mode === 'dark' ? ['base', 900] : ['base', 100])}>
+    <Main p={0} py={0} px={0} w={'100vw'} mih={'100vh'} pl={260} bg={theme => (theme.mode === 'dark' ? ['base', 900] : ['base', 100])}>
       <Flex w={'100%'}>
         <MyAside>
           <></>
@@ -19,8 +19,8 @@ export default function Authorization() {
                   delay: 75,
                   loop: false,
                 }}
-                onInit={(typewriter) => {
-                  typewriter.typeString('Авторизация').start();
+                onInit={typewriter => {
+                  typewriter.typeString('Чат-бот для создания отзывов').start();
                 }}
               />
             </Text>
