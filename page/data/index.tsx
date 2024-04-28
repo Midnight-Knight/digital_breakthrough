@@ -54,13 +54,13 @@ export default function Data() {
   const [objectCoursePositive, setObjectCoursePositive] = useState<number>(0);
   const [objectCourseNoPositive, setObjectCourseNoPositive] = useState<number>(0);
 
-  const [checkTeacher, setCheckTeacher] = useState<boolean>(true);
-  const [checkWebinar, setCheckWebinar] = useState<boolean>(true);
-  const [checkCourse, setCheckCourse] = useState<boolean>(true);
-  const [checkPositive, setCheckPositive] = useState<boolean>(true);
-  const [checkNoPositive, setCheckNoPositive] = useState<boolean>(true);
-  const [checkRelevant, setCheckRelevant] = useState<boolean>(true);
-  const [checkNoRelevant, setCheckNoRelevant] = useState<boolean>(true);
+  const [checkTeacher, setCheckTeacher] = useState<any>('');
+  const [checkWebinar, setCheckWebinar] = useState<any>('');
+  const [checkCourse, setCheckCourse] = useState<any>('');
+  const [checkPositive, setCheckPositive] = useState<any>('');
+  const [checkNoPositive, setCheckNoPositive] = useState<any>('');
+  const [checkRelevant, setCheckRelevant] = useState<any>('');
+  const [checkNoRelevant, setCheckNoRelevant] = useState<any>('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -367,13 +367,69 @@ export default function Data() {
                 />
               </Flex>
               <Flex direction={'row'} justify={'between'} align={'center'} w={'100%'}>
-                <Checkbox size="base" name="teacher" label="Преподаватель" />
-                <Checkbox size="base" name="webinar" label="Вебинар" />
-                <Checkbox size="base" name="course" label="Курс" />
-                <Checkbox size="base" name="positive" label="Положительный" />
-                <Checkbox size="base" name="noPositive" label="Негативный" />
-                <Checkbox size="base" name="relevant" label="Релевантный" />
-                <Checkbox size="base" name="noRelevant" label="Нерелевантный" />
+                <Checkbox
+                  size="base"
+                  name="teacher"
+                  label="Преподаватель"
+                  value={checkTeacher}
+                  onChange={(e: any) => {
+                    setCheckTeacher(e.target.checked);
+                  }}
+                />
+                <Checkbox
+                  size="base"
+                  name="webinar"
+                  label="Вебинар"
+                  value={checkWebinar}
+                  onChange={(e: any) => {
+                    setCheckWebinar(e.target.checked);
+                  }}
+                />
+                <Checkbox
+                  size="base"
+                  name="course"
+                  label="Курс"
+                  value={checkCourse}
+                  onChange={(e: any) => {
+                    setCheckCourse(e.target.checked);
+                  }}
+                />
+                <Checkbox
+                  size="base"
+                  name="positive"
+                  label="Положительный"
+                  value={checkPositive}
+                  onChange={(e: any) => {
+                    setCheckPositive(e.target.checked);
+                  }}
+                />
+                <Checkbox
+                  size="base"
+                  name="noPositive"
+                  label="Негативный"
+                  value={checkNoPositive}
+                  onChange={(e: any) => {
+                    setCheckNoPositive(e.target.checked);
+                  }}
+                />
+                <Checkbox
+                  size="base"
+                  name="relevant"
+                  label="Релевантный"
+                  value={checkRelevant}
+                  onChange={(e: any) => {
+                    setCheckRelevant(e.target.checked);
+                  }}
+                />
+                <Checkbox
+                  size="base"
+                  name="noRelevant"
+                  label="Нерелевантный"
+                  value={checkNoRelevant}
+                  onChange={(e: any) => {
+                    setCheckNoRelevant(e.target.checked);
+                  }}
+                />
               </Flex>
               <Flex w={'100%'} direction={'column'} gap={'0'}>
                 {modelResponses.map((item, i) => (
