@@ -1,25 +1,35 @@
 'use client';
-import { AutocompleteField, Card, Flex, Form } from '@prismane/core';
+import { AutocompleteField, Button, Card, Flex, Form, Text } from '@prismane/core';
 import { useForm } from '@prismane/core/hooks';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Options_api } from '@/consts/api/options_api';
+import { useRouter } from 'next/navigation';
 
 export default function FormCategory() {
-  const [teacherArray, setTeacherArray] = useState<string[]>([]);
-  const [webinarArray, setWebinarArray] = useState<string[]>([]);
-  const [courseArray, setCourseArray] = useState<string[]>([]);
+  const router = useRouter();
+  const [teacherArray, setTeacherArray] = useState<{ value: string; element: string }[]>([]);
+  const [webinarArray, setWebinarArray] = useState<{ value: string; element: string }[]>([]);
+  const [courseArray, setCourseArray] = useState<{ value: string; element: string }[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         console.log(Options_api);
-        axios.defaults.headers.common['Cookie'] = 'abuse_interstitial=e732-193-41-142-172.ngrok-free.app';
-        const response = await axios.get(Options_api);
-        console.log(await response.data);
-        setTeacherArray(await response.data.teachers);
-        setWebinarArray(await response.data.webinars);
-        setCourseArray(await response.data.courses);
+        const response = await axios.post(Options_api, null, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        const bufferTeachers: string[] = await response.data.teachers;
+        const bufferWebinar: string[] = await response.data.webinars;
+        const bufferCourse: string[] = await response.data.courses;
+        console.log(bufferTeachers.map(elem => ({ value: elem, element: elem })));
+        console.log(bufferWebinar);
+        console.log(bufferCourse);
+        setTeacherArray(bufferTeachers.map(elem => ({ value: elem, element: elem })));
+        setWebinarArray(bufferWebinar.map(elem => ({ value: elem, element: elem })));
+        setCourseArray(bufferCourse.map(elem => ({ value: elem, element: elem })));
       } catch (error) {
         console.log(error);
       }
@@ -42,7 +52,13 @@ export default function FormCategory() {
     },
   });
   return (
-    <Form w={'100%'}>
+    <Form
+      w={'100%'}
+      onSubmit={(e: any) => {
+        handleSubmit(e, (v: any) => {
+          router.push(`/analytics/data?teacher=${v.teacher}&webinar=${v.webinar}&course=${v.course}`);
+        });
+      }}>
       <Card w={'100%'}>
         <Flex w={'100%'} direction={'column'} gap={'1rem'}>
           <AutocompleteField
@@ -51,6 +67,7 @@ export default function FormCategory() {
             label="Преподователь"
             {...register('teacher')}
             options={teacherArray}
+            autoComplete={'off'}
           />
           <AutocompleteField
             w={'100%'}
@@ -58,6 +75,7 @@ export default function FormCategory() {
             label="Вебинар"
             {...register('webinar')}
             options={webinarArray}
+            autoComplete={'off'}
           />
           <AutocompleteField
             w={'100%'}
@@ -65,7 +83,11 @@ export default function FormCategory() {
             label="Курс"
             {...register('course')}
             options={courseArray}
+            autoComplete={'off'}
           />
+          <Button type="submit">
+            <Text>Показать аналитику</Text>
+          </Button>
         </Flex>
       </Card>
     </Form>

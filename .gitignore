@@ -7,6 +7,8 @@
 .yarn/install-state.gz
 .env
 /.env
+/certificates
+certificates
 
 # testing
 /coverage
@@ -36,3 +38,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+certificates

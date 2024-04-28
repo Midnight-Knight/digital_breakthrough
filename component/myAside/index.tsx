@@ -24,13 +24,13 @@ export default function MyAside({ children }: Props) {
       direction={'column'}
       justify={'start'}
       gap={'1.5rem'}>
-      <Text cl={(theme) => ['base', theme.mode === 'dark' ? 100 : 900]} fs={'2xl'} fw={'bold'}>
+      <Text cl={theme => ['base', theme.mode === 'dark' ? 100 : 900]} fs={'2xl'} fw={'bold'}>
         RealityFirst
       </Text>
       <Flex direction="column" w={'100%'} gap={10}>
         <ButtonsLinks primary={pathname === '/'} text={'Главная'} link={'/'} />
         <ButtonsLinks primary={pathname.includes('/authorization')} text={'Чат-бот'} link={'/authorization'} />
-        <ButtonsLinks primary={pathname === '/analytics'} text={'Анализатор'} link={'/analytics'} />
+        <ButtonsLinks primary={pathname.includes('/analytics')} text={'Анализатор'} link={'/analytics'} />
       </Flex>
       {children}
     </Flex>

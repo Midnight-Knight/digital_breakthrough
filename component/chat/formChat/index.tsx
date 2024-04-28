@@ -157,9 +157,9 @@ export default function FormChat({ name, teacher, webinar, course }: Props) {
             ? null
             : {
                 question_1: getValue('question_2_1'),
-                question_2: getValue('question_2_1'),
-                question_3: getValue('question_2_1'),
-                question_4: getValue('question_2_1'),
+                question_2: getValue('question_2_2'),
+                question_3: getValue('question_2_3'),
+                question_4: getValue('question_2_4'),
               },
       },
       {
